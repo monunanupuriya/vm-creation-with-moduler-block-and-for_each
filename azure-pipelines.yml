@@ -1,0 +1,68 @@
+name: My Yaml pipeline 
+trigger: none 
+pool: mk-new-agent-pool
+steps:
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+
+
+# - task: TerraformTask@5
+#   displayName: Terraform Init
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'init'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/'
+#     backendServiceArm: 'mk-web-app'
+#     backendAzureRmStorageAccountName: 'chilldhondu001'
+#     backendAzureRmContainerName: 'newcontainer'
+#     backendAzureRmKey: 'mk.pipeline.tfstate'
+
+
+- task: TerraformTask@5
+  displayName: Terraform Init
+  inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/'
+      backendServiceArm: 'mk_web_app_new'
+      backendAzureRmOverrideSubscriptionID: 'caba13fb-1019-44a6-817f-cc5eb0ec1c55'
+      backendAzureRmResourceGroupName: 'mk-backend'
+      backendAzureRmStorageAccountName: 'mkbackendstorage'
+      backendAzureRmContainerName: 'mkstorage'
+      backendAzureRmKey: 'pipeline.terraform.tfstate'
+
+# - task: TerraformTask@5
+#   displayName: terraform plan
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'plan'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/'
+#     environmentServiceNameAzureRM: 'mk-web-app'
+
+- task: TerraformTask@5
+  displayName: terraform plan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    environmentServiceNameAzureRM: 'mk_web_app_new'
+    environmentAzureRmOverrideSubscriptionID: 'caba13fb-1019-44a6-817f-cc5eb0ec1c55'
+
+
+# - task: TerraformTask@5
+#   displayName: terraform apply
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'apply'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/'
+#     environmentServiceNameAzureRM: 'mk-web-app'
+
+- task: TerraformTask@5
+  displayName: terraform apply
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    environmentServiceNameAzureRM: 'mk_web_app_new'
+    environmentAzureRmOverrideSubscriptionID: 'caba13fb-1019-44a6-817f-cc5eb0ec1c55'
