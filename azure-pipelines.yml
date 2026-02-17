@@ -1,6 +1,6 @@
 name: My Yaml pipeline 
 trigger: none 
-pool: mk-new-agent-pool
+pool: mkagentpool
 steps:
 - task: TerraformInstaller@1
   inputs:
