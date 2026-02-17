@@ -12,7 +12,7 @@ steps:
 #   inputs:
 #     provider: 'azurerm'
 #     command: 'init'
-#     workingDirectory: '$(System.DefaultWorkingDirectory)/'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/Env/dev'
 #     backendServiceArm: 'mk-web-app'
 #     backendAzureRmStorageAccountName: 'chilldhondu001'
 #     backendAzureRmContainerName: 'newcontainer'
@@ -24,7 +24,7 @@ steps:
   inputs:
       provider: 'azurerm'
       command: 'init'
-      workingDirectory: '$(System.DefaultWorkingDirectory)/'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/Env/dev'
       backendServiceArm: 'mk_web_app_new'
       backendAzureRmOverrideSubscriptionID: 'caba13fb-1019-44a6-817f-cc5eb0ec1c55'
       backendAzureRmResourceGroupName: 'mk-backend'
@@ -45,7 +45,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Env/dev'
     environmentServiceNameAzureRM: 'mk_web_app_new'
     environmentAzureRmOverrideSubscriptionID: 'caba13fb-1019-44a6-817f-cc5eb0ec1c55'
 
@@ -63,6 +63,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Env/dev'
     environmentServiceNameAzureRM: 'mk_web_app_new'
     environmentAzureRmOverrideSubscriptionID: 'caba13fb-1019-44a6-817f-cc5eb0ec1c55'
